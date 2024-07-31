@@ -6,6 +6,12 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/manufacturer-service/pom.xml" />
+        <option value="$PROJECT_DIR$/identity-service/pom.xml" />
+        <option value="$PROJECT_DIR$/category-service/pom.xml" />
+        <option value="$PROJECT_DIR$/product-service/pom.xml" />
+        <option value="$PROJECT_DIR$/eureka-service/pom.xml" />
+        <option value="$PROJECT_DIR$/gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/minio-service/pom.xml" />
       </list>
     </option>
   </component>
