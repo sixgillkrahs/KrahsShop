@@ -1,14 +1,14 @@
 package com.main.manufacturerservice.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.UUID;
 
-@Setter
+
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class Response {
     private UUID id;
     private String name;

@@ -19,6 +19,7 @@ public class Manufacturer {
     private String name;
     private String code;
     private String country;
+    @Column(name = "isactive")
     private Boolean isActive;
     private Boolean visibility;
 }
