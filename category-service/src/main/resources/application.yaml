@@ -1,0 +1,18 @@
+server:
+  port: 5002
+
+spring:
+  application:
+    name: CATEGORY-SERVICE
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate, dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/category
+    username: postgres
+    password: 123456
