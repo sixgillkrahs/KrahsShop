@@ -1,9 +1,9 @@
 import React from 'react'
 
-const HomeViews = () => {
+const HomeView = () => {
   return (
-    <div>HomeViews</div>
+    <div>HomeView</div>
   )
 }
 
-export default HomeViews
+export default HomeView

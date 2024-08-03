@@ -13,4 +13,6 @@ public class Request {
     private String code;
     @NotBlank(message = "Country is mandatory")
     private String country;
+    private Boolean isActive;
+    private Boolean visibility;
 }

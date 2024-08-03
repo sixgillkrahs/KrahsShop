@@ -10,7 +10,9 @@
     <modules>
         <module>identity-service</module>
         <module>manufacturer-service</module>
+        <module>category-service</module>
     </modules>
+    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>19</maven.compiler.source>

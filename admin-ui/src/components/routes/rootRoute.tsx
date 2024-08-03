@@ -1,30 +1,40 @@
-import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom'
-import _Layout from '../layout/mainLayout';
-import HomeViews from '../../views/home';
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from "react-router-dom";
+import _Layout from "../layout/mainLayout";
+import HomeView from "../../views/home";
+import ProductView from "../../views/product";
+import ManufacturerView from "../../views/manufacturerPage/manufacturer";
 
-
-const homeRoutes :RouteObject[] = [
-    {
-        path:"/",
-        element:<HomeViews/>
-    }
-]
+const homeRoutes: RouteObject[] = [
+  {
+    path: "/",
+    element: <HomeView />,
+  },
+  {
+    path: "/product",
+    element: <ProductView />,
+  },
+  {
+    path: "/manufacturer",
+    element: <ManufacturerView />,
+  },
+];
 
 const routes: RouteObject[] = [
   {
     path: "/",
-    element: <_Layout/>,
+    element: <_Layout />,
     children: homeRoutes,
   },
 ];
 
 const router = createBrowserRouter(routes);
 
-
 const RootRoute = () => {
-  return (
-    <RouterProvider router={router}/>
-  )
-}
+  return <RouterProvider router={router} />;
+};
 
-export default RootRoute
+export default RootRoute;

@@ -42,8 +42,8 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         manufacturer.setName(input.getName());
         manufacturer.setCode(input.getCode());
         manufacturer.setCountry(input.getCountry());
-        manufacturer.setIsActive(true);
-        manufacturer.setVisibility(true);
+        manufacturer.setIsActive(input.getIsActive());
+        manufacturer.setVisibility(input.getVisibility());
         Manufacturer savedManufacturer = manufacturerRepository.save(manufacturer);
         return Response.builder()
                 .id(savedManufacturer.getId())
@@ -71,12 +71,14 @@ public class ManufacturerServiceImpl implements ManufacturerService {
     @Override
     public Response updateManufacturer(UUID id, Request input) {
         Manufacturer manufacturer = manufacturerRepository.findById(id).orElseThrow(()-> new RuntimeException("Manufacturer not found"));
-        if (getManufacturerByCode(input.getCode()) != null) {
+        if(!manufacturer.getCode().equals(input.getCode()) && getManufacturerByCode(input.getCode()) != null){
             throw new RuntimeException("Manufacturer already exists");
         }
         manufacturer.setName(input.getName());
         manufacturer.setCode(input.getCode());
         manufacturer.setCountry(input.getCountry());
+        manufacturer.setIsActive(input.getIsActive());
+        manufacturer.setVisibility(input.getVisibility());
         Manufacturer savedManufacturer = manufacturerRepository.save(manufacturer);
         return Response.builder()
                 .id(savedManufacturer.getId())
