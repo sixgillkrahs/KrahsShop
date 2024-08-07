@@ -39,6 +39,7 @@ const items: MenuItem[] = [
         key: 4,
         label: "Category",
         icon: "",
+        path: "/category",
       },
       {
         key: 5,

@@ -16,4 +16,6 @@ public class Request {
     private String CoverImage;
     private String icon;
     private String metaTitle;
+    private Boolean isActive;
+    private Boolean visibility;
 }

@@ -7,6 +7,7 @@ import _Layout from "../layout/mainLayout";
 import HomeView from "../../views/home";
 import ProductView from "../../views/product";
 import ManufacturerView from "../../views/manufacturerPage/manufacturer";
+import CategoryPage from "../../views/categoryPage/category";
 
 const homeRoutes: RouteObject[] = [
   {
@@ -20,6 +21,10 @@ const homeRoutes: RouteObject[] = [
   {
     path: "/manufacturer",
     element: <ManufacturerView />,
+  },
+  {
+    path: "/category",
+    element: <CategoryPage />,
   },
 ];
 

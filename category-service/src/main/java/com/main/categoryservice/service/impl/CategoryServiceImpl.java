@@ -66,8 +66,8 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCoverImage(request.getCoverImage());
         category.setIcon(request.getIcon());
         category.setMetaTitle(request.getMetaTitle());
-        category.setIsActive(true);
-        category.setVisibility(true);
+        category.setIsActive(request.getIsActive());
+        category.setVisibility(request.getVisibility());
         Category savedManufacturer = categoryRepository.save(category);
         return Response.builder()
                 .id(category.getId())
@@ -86,7 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Response updateCategory(UUID id, Request request) {
         Category category = categoryRepository.findById(id).orElseThrow(()-> new RuntimeException("Category not found"));
-        if (getCategoryByName(request.getName()) != null) {
+        if (getCategoryByName(request.getName()) != null && !category.getName().equals(request.getName())) {
             throw new RuntimeException("Category already exists");
         }
         category.setName(request.getName());
@@ -96,8 +96,8 @@ public class CategoryServiceImpl implements CategoryService {
         category.setCoverImage(request.getCoverImage());
         category.setIcon(request.getIcon());
         category.setMetaTitle(request.getMetaTitle());
-        category.setIsActive(true);
-        category.setVisibility(true);
+        category.setIsActive(request.getIsActive());
+        category.setVisibility(request.getVisibility());
         Category savedCategory = categoryRepository.save(category);
         return Response.builder()
                 .id(category.getId())

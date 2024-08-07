@@ -1,4 +1,12 @@
-import { Button, Popconfirm, Skeleton, Table, notification } from "antd";
+import {
+  Button,
+  Popconfirm,
+  Skeleton,
+  Space,
+  Table,
+  notification,
+  Input,
+} from "antd";
 import { getall } from "../../common/api/manufacturer";
 import { useEffect, useState } from "react";
 import ModalAdd from "./modal";
@@ -10,10 +18,12 @@ import {
 } from "@ant-design/icons";
 import { data } from "../../interface/manufacturer/index";
 import { deleTe } from "../../common/api/manufacturer";
+import { NotificationType } from '../../_share/message/index'
 
 const { Column } = Table;
 
-type NotificationType = "success" | "info" | "warning" | "error";
+
+const { Search } = Input;
 
 const ManufacturerView = () => {
   const [manufacturers, setManufacturers] = useState([]);
@@ -39,6 +49,7 @@ const ManufacturerView = () => {
   const getAlls = () => {
     getall().then((res) => {
       setManufacturers(res);
+      setLoading(false);
     });
   };
 
@@ -67,75 +78,51 @@ const ManufacturerView = () => {
 
   useEffect(() => {
     getAlls();
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
   }, []);
 
   return (
     <>
       <div className="container">
         {contextHolder}
-        <div className="py-5">
+        <Space
+          direction="horizontal"
+          size="middle"
+          style={{ display: "flex", justifyContent: "space-between" }}
+          className="mb-5"
+        >
           <Button onClick={addHandler}>Add New </Button>
-        </div>
-        <Table dataSource={manufacturers} rowKey={"id"}>
+          <Search />
+        </Space>
+        <Table dataSource={manufacturers} rowKey={"id"} loading={loading}>
           <Column
             title={"#"}
-            render={(_, __, index) =>
-              loading ? <Skeleton.Button active /> : <>{index + 1}</>
-            }
+            render={(_, __, index) => <>{index + 1}</>}
             key={"id"}
           />
-          <Column
-            title={"Name"}
-            dataIndex={"name"}
-            render={(value) =>
-              loading ? <Skeleton.Button active /> : <>{value}</>
-            }
-            key={"name"}
-          />
-          <Column
-            title={"Code"}
-            dataIndex={"code"}
-            render={(value) =>
-              loading ? <Skeleton.Button active /> : <>{value}</>
-            }
-            key={"code"}
-          />
-          <Column
-            title={"Country"}
-            dataIndex={"country"}
-            render={(value) =>
-              loading ? <Skeleton.Button active /> : <>{value}</>
-            }
-            key={"country"}
-          />
+          <Column title={"Name"} dataIndex={"name"} key={"name"} />
+          <Column title={"Code"} dataIndex={"code"} key={"code"} />
+          <Column title={"Country"} dataIndex={"country"} key={"country"} />
           <Column
             title={"Action"}
             key={"action"}
-            render={(_, record: data) =>
-              loading ? (
-                <Skeleton.Button active />
-              ) : (
-                <>
-                  <Button key={"view"} icon={<EyeOutlined />} />
-                  <Button
-                    key={"edit"}
-                    onClick={() => editHandler(record)}
-                    icon={<EditOutlined />}
-                  />
-                  <Popconfirm
-                    title="Delete the manufacturer"
-                    description="Are you sure to delete this manufacturer?"
-                    icon={<QuestionCircleOutlined style={{ color: "red" }} />}
-                    onConfirm={() => deleteHandler(record?.id ?? "")}
-                  >
-                    <Button key={"delete"} icon={<DeleteOutlined />} />
-                  </Popconfirm>
-                </>
-              )
-            }
+            render={(_, record: data) => (
+              <>
+                <Button key={"view"} icon={<EyeOutlined />} />
+                <Button
+                  key={"edit"}
+                  onClick={() => editHandler(record)}
+                  icon={<EditOutlined />}
+                />
+                <Popconfirm
+                  title="Delete the manufacturer"
+                  description="Are you sure to delete this manufacturer?"
+                  icon={<QuestionCircleOutlined style={{ color: "red" }} />}
+                  onConfirm={() => deleteHandler(record?.id ?? "")}
+                >
+                  <Button key={"delete"} icon={<DeleteOutlined />} />
+                </Popconfirm>
+              </>
+            )}
           />
         </Table>
       </div>

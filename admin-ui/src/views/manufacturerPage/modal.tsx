@@ -3,8 +3,7 @@ import { Card, Form, Input, Modal, Space, Switch } from "antd";
 import React, { memo } from "react";
 import { save, update } from "../../common/api/manufacturer";
 import { data } from "../../interface/manufacturer/index";
-
-type NotificationType = "success" | "info" | "warning" | "error";
+import { NotificationType } from "../../_share/message/index";
 
 interface ModalAddProps {
   visible: boolean;
