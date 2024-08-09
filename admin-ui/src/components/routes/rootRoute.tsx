@@ -3,7 +3,7 @@ import {
   RouteObject,
   RouterProvider,
 } from "react-router-dom";
-import _Layout from "../layout/mainLayout";
+import _Layout from "../layoutt/mainLayout";
 import HomeView from "../../views/home";
 import ProductView from "../../views/product";
 import ManufacturerView from "../../views/manufacturerPage/manufacturer";

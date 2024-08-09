@@ -1,10 +1,8 @@
-import { Card, Layout, Menu, MenuProps } from "antd";
 import { Outlet } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { MenuItem } from "../../interface/index";
 import { useNavigate } from "react-router-dom";
-
-const { Content, Footer, Header, Sider } = Layout;
+import { Layout, LayoutContent, LayoutHeader, LayoutSider,Card ,Menu} from "../index";
 
 const items: MenuItem[] = [
   {
@@ -95,7 +93,7 @@ const _Layout = () => {
   return (
     <>
       <Layout className="h-screen">
-        <Sider>
+        <LayoutSider>
           <div className="bg-white h-full">
             <div className=" w-full flex items-center justify-center">
               <img src={logo} alt="" className="w-36" />
@@ -107,14 +105,14 @@ const _Layout = () => {
               onClick={handlerOnClick}
             />
           </div>
-        </Sider>
+        </LayoutSider>
         <Layout>
-          <Header className="bg-white shadow-inner h-20"></Header>
-          <Content>
+          <LayoutHeader className="bg-white shadow-inner h-20"></LayoutHeader>
+          <LayoutContent>
             <Card className="m-4">
               <Outlet />
             </Card>
-          </Content>
+          </LayoutContent>
         </Layout>
       </Layout>
     </>
