@@ -3,11 +3,21 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomeView from "../pages/home/homeview";
 import { LayoutMain } from "../layouts";
 import NoFoundPage from "../pages/404";
+import RegisterView from "../pages/auth/register";
+import LoginView from "../pages/auth/login";
 
 const childRoutes = [
   {
     path: "/",
     element: <HomeView />,
+  },
+  {
+    path: "/register",
+    element: <RegisterView />,
+  },
+  {
+    path: "/login",
+    element: <LoginView />,
   },
 ];
 

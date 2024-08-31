@@ -2,7 +2,7 @@ import React from "react";
 import "./arrival.css";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
-import image1 from "../../assets/images/arrival1.webp";
+import image1 from "../../../assets/images/arrival1.webp";
 
 const divStyle = {
   height: "600px",

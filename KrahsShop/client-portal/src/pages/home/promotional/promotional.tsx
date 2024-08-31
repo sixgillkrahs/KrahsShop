@@ -1,5 +1,5 @@
-import promotional1 from "../../assets/images/promotional/promotional1.webp";
-import promotional2 from "../../assets/images/promotional/promotional2.webp";
+import promotional1 from "../../../assets/images/promotional/promotional1.webp";
+import promotional2 from "../../../assets/images/promotional/promotional2.webp";
 
 const promotional = () => {
   return (

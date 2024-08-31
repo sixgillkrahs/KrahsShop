@@ -1,4 +1,8 @@
-import { Arrival, Hero, Promotional, Section } from "../../components";
+import { Arrival } from "./arrival";
+import { Hero } from "./hero";
+import { Promotional } from "./promotional";
+import { Section } from "./section";
+
 
 const HomeView = () => {
   return (
