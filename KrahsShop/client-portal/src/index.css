@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    /* font-family: 'Poppins', sans-serif; */
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 500;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    cursor: default;
+}
+
+@font-face {
+  font-family: 'SFUAngieBlack';
+  src: url('../src/assets/fonts/SFUAngieBlack.TTF');
+  font-weight: normal;
+  font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0000FF; 
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0000CC; 
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #193254 #eee; 
+}
+
+a,p,h1,h2,h3,h4,h5,h6 {
+  text-decoration: none;
+  color: #09024a;
+}
+
+
