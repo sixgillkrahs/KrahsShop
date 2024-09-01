@@ -9,6 +9,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>client-portal-gateway</module>
+        <module>euraku-service</module>
+        <module>user-service</module>
     </modules>
 
     <properties>
