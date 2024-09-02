@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Input } from "../../components";
+import { Button, Input } from "../../components";
 import { loginUser } from "../../api/user/userAPI";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -64,6 +64,7 @@ const LoginView = () => {
             type="password"
             label="Password"
             onChange={formik.handleChange}
+            description="At least 5 characters long"
             onBlur={formik.handleBlur}
             value={formik.values.password}
           />
@@ -76,13 +77,7 @@ const LoginView = () => {
           >
             Forgot your password?
           </Link>
-          <button
-            className="bg-black text-white p-2 rounded-none mt-4"
-            type="submit"
-            disabled={formik.isSubmitting}
-          >
-            LOG IN
-          </button>
+          <Button onClick={formik.handleSubmit}>LOG IN</Button>
         </form>
       </div>
     </div>

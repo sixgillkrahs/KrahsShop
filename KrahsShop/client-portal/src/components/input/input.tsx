@@ -4,11 +4,12 @@ interface InputProps {
   name: string;
   label: string;
   type: string;
-  error?: string;
+  error?: string | any;
   description?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  placeholder?: string;
 }
 
 const Input = ({
@@ -20,6 +21,7 @@ const Input = ({
   value,
   onChange,
   onBlur,
+  placeholder,
   ...props
 }: InputProps) => {
   return (
@@ -33,6 +35,7 @@ const Input = ({
         onChange={onChange}
         onBlur={onBlur}
         {...props}
+        placeholder={placeholder}
       />
       <p className="text-xs text-gray-500">{description}</p>
       {error && <p className="text-red-500 text-sm">{error}</p>}

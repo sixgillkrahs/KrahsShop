@@ -33,8 +33,9 @@ const isLoggedIn = () => {
 };
 
 const logoutUser = async () => {
-  const response = await api.post("/user/logout", { timeout: 10000 });
-  return response.data;
+  // const response = await api.post("/user/logout", { timeout: 10000 });
+  localStorage.removeItem("token");
+  return true;
 };
 
 const test = async () => {

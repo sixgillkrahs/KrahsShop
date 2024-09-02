@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { FaHeart, FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
 import { Icon } from "../icons";
 import { Link } from "react-router-dom";
-import { isLoggedIn } from "../../api/user/userAPI";
+import { isLoggedIn, logoutUser } from "../../api/user/userAPI";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -11,6 +11,11 @@ const Header = () => {
   const IsLoggedIn: boolean = isLoggedIn();
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 0);
+  };
+
+  const handleLogout = async () => {
+    await logoutUser();
+    window.location.reload();
   };
 
   useEffect(() => {
@@ -74,9 +79,12 @@ const Header = () => {
           <Icon icon={FaSearch} className={`${textColor} text-xl`} />
           <Icon icon={FaHeart} className={`${textColor} text-xl`} />
           {IsLoggedIn ? (
-            <Link to="/profile">
-              <Icon icon={FaUser} className={`${textColor} text-xl`} />
-            </Link>
+            <>
+              <Link to="/profile">
+                <Icon icon={FaUser} className={`${textColor} text-xl`} />
+              </Link>
+              <button onClick={handleLogout}>Logout</button>
+            </>
           ) : (
             <Link to="/login">
               <Icon icon={FaUser} className={`${textColor} text-xl`} />
