@@ -5,6 +5,7 @@ import { LayoutMain } from "../layouts";
 import NoFoundPage from "../pages/404";
 import RegisterView from "../pages/auth/register";
 import LoginView from "../pages/auth/login";
+import ProfileView from "../pages/auth/profile";
 
 const childRoutes = [
   {
@@ -18,6 +19,10 @@ const childRoutes = [
   {
     path: "/login",
     element: <LoginView />,
+  },
+  {
+    path: "/profile",
+    element: <ProfileView />,
   },
 ];
 

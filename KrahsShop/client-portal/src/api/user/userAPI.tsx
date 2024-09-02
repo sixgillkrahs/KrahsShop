@@ -1,8 +1,12 @@
 import { User } from "../../interfaces";
-import api from "../apibase";
+import api, { setAuthToken } from "../apibase";
 
 const getUser = async () => {
   const response = await api.get("/user", { timeout: 10000 });
+  const jwt = localStorage.getItem("token");
+  if (jwt) {
+    setAuthToken(jwt, api);
+  }
   return response.data;
 };
 
@@ -12,8 +16,20 @@ const registerUser = async (user: User) => {
 };
 
 const loginUser = async (user: any) => {
-  const response = await api.post("/user/login", user, { timeout: 10000 });
-  return response.data;
+  try {
+    const response = await api.post("/user/login", user, { timeout: 10000 });
+    localStorage.setItem("token", response.data.jwt);
+    setAuthToken(response.data.jwt, api);
+    return response.data;
+  } catch (error) {
+    console.error("Login error:", error);
+    throw error;
+  }
+};
+
+const isLoggedIn = () => {
+  const token = localStorage.getItem("token");
+  return !!token;
 };
 
 const logoutUser = async () => {
@@ -21,4 +37,9 @@ const logoutUser = async () => {
   return response.data;
 };
 
-export { getUser, registerUser, loginUser, logoutUser };
+const test = async () => {
+  const response = await api.get("/user/test", { timeout: 10000 });
+  return response.data;
+};
+
+export { getUser, registerUser, loginUser, logoutUser, test, isLoggedIn };

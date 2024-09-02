@@ -36,6 +36,12 @@ public class ApplicationConfigration {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults());
+        http.headers(headers -> headers
+                .addHeaderWriter((request, response) ->
+                        response.setHeader("Content-Security-Policy",
+                                "default-src 'self'; connect-src 'self' http://localhost:4000;")
+                )
+        );
         return http.build();
     }
 
@@ -44,7 +50,7 @@ public class ApplicationConfigration {
             @Override
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
-                cfg.setAllowedOrigins(Collections.singletonList("*"));
+                cfg.setAllowedOrigins(Arrays.asList("http://localhost:5173"));
                 cfg.setAllowedMethods(Collections.singletonList("*"));
                 cfg.setAllowCredentials(true);
                 cfg.setAllowedHeaders(Collections.singletonList("*"));

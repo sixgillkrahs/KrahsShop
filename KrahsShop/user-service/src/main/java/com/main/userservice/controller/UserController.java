@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/user")
-@CrossOrigin(origins = "*")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -25,7 +24,6 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    @CrossOrigin(origins = "*")
     public ResponseEntity<LoginResponse> login(@Validated @RequestBody LoginRequest input) {
         LoginResponse response = userService.login(input);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -41,5 +39,10 @@ public class UserController {
     public ResponseEntity<UserResponse> updateUserProfile(@Validated @RequestBody UserRequest input, @RequestHeader("Authorization") String jwt) {
         UserResponse userResponse = userService.updateUserProfile(input, jwt);
         return new ResponseEntity<>(userResponse, HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<String> test() {
+        return new ResponseEntity<>("User Service is Up and Running", HttpStatus.OK);
     }
 }

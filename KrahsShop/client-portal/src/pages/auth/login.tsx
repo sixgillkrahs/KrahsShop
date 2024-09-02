@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "../../components";
 import { loginUser } from "../../api/user/userAPI";
-import { Formik, useFormik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 const LoginView = () => {
   const navigate = useNavigate();
@@ -24,15 +24,21 @@ const LoginView = () => {
       try {
         const login = await loginUser(values);
         console.log(login);
-        navigate("/");
+        if (login.status) {
+          navigate("/");
+          toast.success("Login successful.");
+        } else {
+          toast.error("Login failed. Please try again.");
+        }
       } catch (error) {
         console.error("Login error:", error);
-        toast.error("Login failed. Please try again.");
+        toast("Login failed. Please try again.");
       }
     },
   });
   return (
     <div className="flex flex-col items-center justify-center h-screen">
+      <ToastContainer />
       <div className="flex flex-col gap-4 w-1/3 max-w-md">
         <h1 className="text-4xl text-center">LOG IN TO YOUR ACCOUNT</h1>
         <Link

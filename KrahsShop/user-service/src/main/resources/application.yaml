@@ -1,6 +1,10 @@
 server:
   port: 5003
 spring:
+  security:
+    user:
+      name: quando
+      password: 123456
   application:
     name: USER-SERVICE
   jpa:
