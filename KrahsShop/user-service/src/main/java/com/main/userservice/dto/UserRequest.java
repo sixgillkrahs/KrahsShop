@@ -19,13 +19,13 @@ public class UserRequest {
     private String email;
     private Role role = Role.ROLE_USER;
     @NotBlank(message = "Name is mandatory")
-    private String name;
+    private String firstName;
     @NotBlank(message = "Last name is mandatory")
     private String lastName;
-    @NotBlank(message = "Phone is mandatory")
     @Size(min = 10, max = 10, message = "Phone must be 10 characters long")
     @Pattern(regexp = "^\\d{10}$")
     private String phone;
-    @NotBlank(message = "Address is mandatory")
     private String address;
+    @NotBlank
+    private String sex;
 }

@@ -19,8 +19,11 @@ public class User {
     private String password;
     private String email;
     private Role role;
-    private String name;
+    private String firstName;
     private String lastName;
     private String phone;
     private String address;
+    private String sex;
+    private Boolean isDeleted;
+
 }

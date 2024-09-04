@@ -55,11 +55,13 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .id(UUID.randomUUID())
                 .address(input.getAddress())
                 .email(input.getEmail())
-                .name(input.getName())
+                .firstName(input.getFirstName())
                 .lastName(input.getLastName())
                 .password(passwordEncoder.encode(input.getPassword()))
                 .phone(input.getPhone())
                 .role(input.getRole())
+                .sex(input.getSex())
+                .isDeleted(false)
                 .build();
        try {
            User savedUser = userRepository.save(createUser);
@@ -72,11 +74,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .id(createUser.getId())
                 .address(createUser.getAddress())
                 .email(createUser.getEmail())
-                .name(createUser.getName())
+                .firstName(createUser.getFirstName())
                 .password(createUser.getPassword())
                 .lastName(createUser.getLastName())
                 .phone(createUser.getPhone())
                 .role(createUser.getRole().toString())
+                .sex(createUser.getSex())
                 .build();
     }
 
@@ -88,7 +91,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .id(user.getId())
                 .address(user.getAddress())
                 .email(user.getEmail())
-                .name(user.getName())
+                .firstName(user.getFirstName())
                 .password(user.getPassword())
                 .lastName(user.getLastName())
                 .phone(user.getPhone())
@@ -120,7 +123,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             }
             user.setAddress(input.getAddress());
             user.setEmail(input.getEmail());
-            user.setName(input.getName());
+            user.setAddress(input.getFirstName());
             user.setLastName(input.getLastName());
             user.setPassword(passwordEncoder.encode(input.getPassword()));
             user.setPhone(input.getPhone());
@@ -130,7 +133,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                     .id(user.getId())
                     .address(user.getAddress())
                     .email(user.getEmail())
-                    .name(user.getName())
+                    .firstName(user.getAddress())
                     .password(user.getPassword())
                     .lastName(user.getLastName())
                     .phone(user.getPhone())
@@ -138,6 +141,21 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                     .build();
         }catch (Exception e){
             throw new RuntimeException("Error while updating user");
+        }
+    }
+
+    @Override
+    public Boolean deleteUserProfile(String jwt) {
+        try {
+            User user = userRepository.findByEmail(JwtProvider.getEmailFromJwtToken(jwt));
+            if(user == null){
+                throw new RuntimeException("User not found");
+            }
+            user.setIsDeleted(true);
+            userRepository.save(user);
+            return true;
+        }catch (Exception e){
+            throw new RuntimeException("Error while deleting user");
         }
     }
 

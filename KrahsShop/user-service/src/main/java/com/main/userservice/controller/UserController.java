@@ -45,4 +45,10 @@ public class UserController {
     public ResponseEntity<String> test() {
         return new ResponseEntity<>("User Service is Up and Running", HttpStatus.OK);
     }
+
+    @DeleteMapping("/profile")
+    public ResponseEntity<Boolean> deleteUserProfile(@RequestHeader("Authorization") String jwt) {
+        Boolean response = userService.deleteUserProfile(jwt);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

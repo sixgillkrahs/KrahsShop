@@ -10,7 +10,7 @@ const getUser = async () => {
   return response.data;
 };
 
-const registerUser = async (user: User) => {
+const registerUser = async (user: any) => {
   const response = await api.post("/user/register", user, { timeout: 10000 });
   return response.data;
 };

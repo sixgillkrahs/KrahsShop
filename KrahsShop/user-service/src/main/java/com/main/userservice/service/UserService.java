@@ -10,4 +10,5 @@ public interface UserService {
     public UserResponse getUserProfile(String jwt);
     public LoginResponse login(LoginRequest input);
     public UserResponse updateUserProfile(UserRequest input, String jwt);
+    public Boolean deleteUserProfile(String jwt);
 }
