@@ -24,9 +24,9 @@ const LoginView = () => {
       try {
         const login = await loginUser(values);
         console.log(login);
-        if (login.status) {
+        if (login.code === 201) {
+          toast.success(login.message);
           navigate("/");
-          toast.success("Login successful.");
         } else {
           toast.error("Login failed. Please try again.");
         }
@@ -37,7 +37,7 @@ const LoginView = () => {
     },
   });
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-screen pt-20">
       <ToastContainer />
       <div className="flex flex-col gap-4 w-1/3 max-w-md">
         <h1 className="text-4xl text-center">LOG IN TO YOUR ACCOUNT</h1>

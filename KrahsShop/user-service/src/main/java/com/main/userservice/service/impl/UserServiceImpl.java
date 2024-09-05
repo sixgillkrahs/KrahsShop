@@ -6,6 +6,8 @@ import com.main.userservice.dto.LoginRequest;
 import com.main.userservice.dto.LoginResponse;
 import com.main.userservice.dto.UserRequest;
 import com.main.userservice.dto.UserResponse;
+import com.main.userservice.exception.ErrorCode;
+import com.main.userservice.exception.HandleRuntimeException;
 import com.main.userservice.model.User;
 import com.main.userservice.repository.UserRepository;
 import com.main.userservice.service.UserService;
@@ -49,7 +51,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public UserResponse createUser(UserRequest input) {
         User isEmailExist = userRepository.findByEmail(input.getEmail());
         if (isEmailExist != null) {
-            throw new RuntimeException("Email is Already Used With Another Account");
+            throw new HandleRuntimeException(ErrorCode.USER_ALREADY_EXISTS);
         }
         User createUser = User.builder()
                 .id(UUID.randomUUID())

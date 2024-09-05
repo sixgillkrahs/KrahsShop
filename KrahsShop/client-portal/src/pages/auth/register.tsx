@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button, CheckBox, Input, RadioButton } from "../../components";
@@ -25,6 +25,7 @@ const validationSchema = Yup.object({
 });
 
 const RegisterView = () => {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
@@ -48,21 +49,28 @@ const RegisterView = () => {
     };
     try {
       const response = await registerUser(request);
-      if (response.status) {
-        toast("Registration successful.");
+      console.log(response);
+      if (response.code === 409) {
+        toast(response.message);
+        return;
       } else {
-        toast("Registration failed. Please try again.");
+        toast(response.message);
+        navigate("/login");
+        return;
       }
     } catch (error) {
       toast("Registration failed. Please try again.");
+      return;
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen flex-col">
+    <div className="flex items-center justify-center min-h-screen flex-col pt-20">
       <ToastContainer />
       <div className="w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-6">CREATE AN ACCOUNT</h1>
+        <h1 className="text-3xl font-bold text-center mb-6">
+          CREATE AN ACCOUNT
+        </h1>
         <Link
           to="/login"
           className="block text-lg text-red-500 underline text-center mb-6"
