@@ -8,6 +8,7 @@
         <option value="$PROJECT_DIR$/client-portal-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
         <option value="$PROJECT_DIR$/euraku-service/pom.xml" />
+        <option value="$PROJECT_DIR$/category-service/pom.xml" />
       </list>
     </option>
   </component>
