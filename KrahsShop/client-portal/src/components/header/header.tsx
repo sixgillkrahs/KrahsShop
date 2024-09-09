@@ -31,17 +31,21 @@ const Header = () => {
     isHomePage && !isScrolled ? "bg-transparent" : "bg-white shadow-md";
 
   return (
-    <header
-      // className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${bgColor}`}
-    >
+    <header>
       <div
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${bgColor}`}
       >
-        <div className="w-full h-full bg-red-500">
-          p
-        </div>
+        {!(isHomePage && !isScrolled) ? (
+          <></>
+        ) : (
+          <div className="w-full h-full bg-black">p</div>
+        )}
         <div className="flex justify-between items-center p-4">
-          <h1 className={`text-4xl font-bold ${textColor}`}>THE NINES</h1>
+          <h1>
+            <Link to={"/"} className={`text-4xl font-bold ${textColor}`}>
+              THE NINES
+            </Link>
+          </h1>
           <nav>
             <ul className="flex gap-5">
               <li className="relative group">

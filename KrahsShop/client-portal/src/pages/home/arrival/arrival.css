@@ -1,16 +1,12 @@
 .relative {
     overflow-x: hidden;
-    /* Ẩn cuộn ngang */
 }
 
 .flex {
     overflow-x: auto;
-    /* Cho phép cuộn ngang */
     cursor: grab;
-    /* Cursors khi kéo */
 }
 
 .flex:active {
     cursor: grabbing;
-    /* Cursors khi đang kéo */
 }

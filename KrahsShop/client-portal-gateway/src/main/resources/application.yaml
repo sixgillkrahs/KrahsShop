@@ -8,6 +8,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/api/user/**
+        - id: category-service
+          uri: lb://CATEGORY-SERVICE
+          predicates:
+            -  Path=/api/category/**
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
       globalcors:

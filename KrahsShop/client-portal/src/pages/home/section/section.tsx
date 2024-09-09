@@ -2,7 +2,7 @@ import "./sections.css";
 
 const Section = () => {
   return (
-    <div className="text-center max-w-3xl mx-auto m-0 m-16 flex flex-col gap-5" >
+    <div className="text-center max-w-3xl mx-auto m-16 flex flex-col gap-5" >
       <h1 className="text-4xl font-bold">ELEGANCE AGITATOR</h1>
       <p>
         <strong>
