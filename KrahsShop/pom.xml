@@ -11,6 +11,7 @@
         <module>client-portal-gateway</module>
         <module>euraku-service</module>
         <module>user-service</module>
+        <module>admin-portal-gateway</module>
     </modules>
 
     <properties>

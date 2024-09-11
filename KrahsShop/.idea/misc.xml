@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/user-service/pom.xml" />
         <option value="$PROJECT_DIR$/euraku-service/pom.xml" />
         <option value="$PROJECT_DIR$/category-service/pom.xml" />
+        <option value="$PROJECT_DIR$/admin-portal-gateway/pom.xml" />
+        <option value="$PROJECT_DIR$/euraku-admin-service/pom.xml" />
       </list>
     </option>
   </component>
