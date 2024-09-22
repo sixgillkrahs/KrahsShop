@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="euraku-admin-service" />
+        <module name="user-service" />
+        <module name="category-service" />
+        <module name="client-portal-gateway" />
+        <module name="euraku-service" />
+        <module name="admin-portal-gateway" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin-portal-gateway" options="-parameters" />
+      <module name="category-service" options="-parameters" />
+      <module name="client-portal-gateway" options="-parameters" />
+      <module name="euraku-admin-service" options="-parameters" />
+      <module name="euraku-service" options="-parameters" />
+      <module name="user-service" options="-parameters" />
+    </option>
+  </component>
+</project>
